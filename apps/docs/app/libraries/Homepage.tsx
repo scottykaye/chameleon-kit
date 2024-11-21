@@ -9,73 +9,6 @@ import { Modal } from "@chameleon-kit/ui/Modal";
 import { Text } from "@chameleon-kit/ui/Text";
 import { useState } from "react";
 
-function AccordionContainer({
-  defaultIsOpen = [],
-  defaultIsOpenSingle = null,
-  toggleMode = "all",
-}: {
-  defaultIsOpen?: Array<string>;
-  toggleMode?: "all" | "single";
-  defaultIsOpenSingle?: string | null;
-}) {
-  const [isOpenSingle, setIsOpenSingle] = useState(defaultIsOpenSingle);
-  const [isOpen, setIsOpen] = useState(defaultIsOpen);
-
-  function handleClick(value: string) {
-    if (toggleMode === "all") {
-      setIsOpen((prevState) => {
-        if (prevState.includes(value)) {
-          return prevState.filter((item) => item !== value);
-        }
-
-        return [...prevState, value];
-      });
-    }
-    if (toggleMode === "single") {
-      setIsOpenSingle((prevState) => {
-        return prevState === value ? null : value;
-      });
-    }
-  }
-
-  return (
-    <Accordion>
-      <Panel
-        title="Title of panel"
-        label="panel1"
-        isOpen={isOpen.includes("panel1") || isOpenSingle === "panel1"}
-        onClick={() => handleClick("panel1")}
-      >
-        One panel
-      </Panel>
-      <Panel
-        title="Two Title of panel"
-        label="panel2"
-        isOpen={isOpen.includes("panel2") || isOpenSingle === "panel2"}
-        onClick={() => handleClick("panel2")}
-      >
-        test
-      </Panel>
-      <Panel
-        title="Three Title of panel"
-        label="panel3"
-        isOpen={isOpen.includes("panel3") || isOpenSingle === "panel3"}
-        onClick={() => handleClick("panel3")}
-      >
-        test
-      </Panel>
-      <Panel
-        title="Four Title of panel"
-        label="panel4"
-        isOpen={isOpen.includes("panel4") || isOpenSingle === "panel4"}
-        onClick={() => handleClick("panel4")}
-      >
-        test
-      </Panel>
-    </Accordion>
-  );
-}
-
 export function Homepage() {
   const [isModalOpen, setModalOpen] = useState(false);
 
@@ -90,7 +23,20 @@ export function Homepage() {
         </Button>
       </Card>
       <li>
-        <AccordionContainer />
+        <Accordion>
+          <Panel title="Title of panel" label="panel1">
+            One panel
+          </Panel>
+          <Panel title="Two Title of panel" label="panel2">
+            test
+          </Panel>
+          <Panel title="Three Title of panel" label="panel3">
+            test
+          </Panel>
+          <Panel title="Four Title of panel" label="panel4">
+            test
+          </Panel>
+        </Accordion>
       </li>
       <li className="flex flex-col gap-4">
         <Input label="Form Label" placeholder="Give me text" />
