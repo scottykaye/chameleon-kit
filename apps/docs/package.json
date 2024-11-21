@@ -18,6 +18,8 @@
     "autoprefixer": "10.0.1",
     "postcss": "8.4.35",
     "tailwindcss": "3.3.0",
+    "tailwind-merge": "2.5.4",
+    "tailwindcss-animate": "1.0.7",
     "typescript": "5.4.5"
   }
 }

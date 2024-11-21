@@ -1,5 +1,5 @@
-import { Medications } from "./libraries/Medications";
+import { Homepage } from "./libraries/Homepage";
 
 export default function Home() {
-  return <Medications />;
+  return <Homepage />;
 }
