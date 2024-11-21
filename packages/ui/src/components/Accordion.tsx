@@ -21,8 +21,7 @@ namespace Accordion {
     title: ReactNode;
     label: string;
     controlledElement?: string;
-    isOpen?: boolean;
-    onClick?: () => void;
+    defaultIsOpen?: boolean;
   }
   export interface Context {
     keyboardControls?: KeyboardNav;
@@ -52,9 +51,9 @@ export function Panel({
   title,
   label,
   controlledElement,
-  isOpen = false,
-  onClick = () => {},
+  defaultIsOpen = false,
 }: Accordion.PanelProps) {
+  const [isOpen, setIsOpen] = useState(defaultIsOpen);
   const { keyboardControls, useKeyboardNav } = useContext(AccordionContext);
 
   if (
@@ -69,6 +68,10 @@ export function Panel({
   const ref = useKeyboardNav(label) as (
     instance: HTMLButtonElement | null,
   ) => void;
+
+  function handleToggle() {
+    setIsOpen((isOpen) => !isOpen);
+  }
 
   function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
     if (keyboardControls) {
@@ -86,7 +89,7 @@ export function Panel({
           // Points to the ID of the panel which the header controls.
           aria-controls={controlledElement}
           id={label}
-          onClick={onClick}
+          onClick={handleToggle}
           className="px-4 py-2 w-full text-left flex gap-2 items-center"
           ref={ref}
           onKeyDown={onKeyDown}
