@@ -5,6 +5,7 @@
 
 .DS_Store
 .next
+dist
 
 # User-specific files
 *.rsuser
