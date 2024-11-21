@@ -1,41 +1,81 @@
 {
   "name": "@chameleon-kit/ui",
-  "version": "0.0.0",
-  "description": "TODO",
-  "homepage": "TODO",
+  "version": "0.0.1",
+  "description": "Chameleon Kit component library!",
   "author": {
-    "name": "TODO",
-    "email": "TODO"
+    "name": "Scotty Kaye",
+    "email": "scottykaye.web@gmail.com"
   },
   "repository": {
     "type": "git",
     "url": "TODO",
     "directory": "packages/chameleon-kit"
   },
+  "private": true,
+  "sideEffects": false,
+  "main": "./dist/index.js",
   "exports": {
     ".": {
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
+    },
+    "./Accordion": {
+      "import": "./dist/components/Accordion.js",
+      "types": "./dist/components/Accordion.d.ts"
+    },
+    "./Button": {
+      "import": "./dist/components/Button.js",
+      "types": "./dist/components/Button.d.ts"
+    },
+    "./Card": {
+      "import": "./dist/components/Card.js",
+      "types": "./dist/components/Card.d.ts"
+    },
+    "./Heading": {
+      "import": "./dist/components/Heading.js",
+      "types": "./dist/components/Heading.d.ts"
+    },
+    "./Input": {
+      "import": "./dist/components/Input.js",
+      "types": "./dist/components/Input.d.ts"
+    },
+    "./Modal": {
+      "import": "./dist/components/Modal.js",
+      "types": "./dist/components/Modal.d.ts"
+    },
+    "./Text": {
+      "import": "./dist/components/Text.js",
+      "types": "./dist/components/Text.d.ts"
+    },
+    "./ThemeProvider": {
+      "import": "./dist/components/ThemeProvider.js",
+      "types": "./dist/components/ThemeProvider.d.ts"
     }
   },
   "type": "module",
   "devDependencies": {
     "@swc/cli": "0.3.10",
     "@swc/core": "1.4.2",
-    "hohoro": "0.3.0",
-    "@types/bun": "1.1.11",
-    "typescript": "5.4.5"
+    "@types/bun": "latest",
+    "hohoro": "0.2.1",
+    "typescript": "5.4.5",
+    "class-variance-authority": "0.7.0"
   },
   "scripts": {
     "dev": "node --watch-path=./src dev.mjs",
-    "build": "hohoro-experimental",
+    "build": "hohoro",
     "type-check": "tsc -p ./tsconfig.json",
     "lint": "biome lint ./src/",
     "test": "bun test",
     "prepub": "bun run build && bun run type-check && bun run lint && bun run test",
     "pub": "npm publish --access public"
   },
-  "publishConfig": {
-    "access": "public"
+  "dependencies": {
+    "accessible-navigation": "0.0.0",
+    "lucide-react": "0.445.0"
+  },
+  "peerDependencies": {
+    "react": "19.0.0-rc-7771d3a7-20240827",
+    "react-dom": "19.0.0-rc-7771d3a7-20240827"
   }
 }

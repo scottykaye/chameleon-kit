@@ -15,8 +15,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className="min-h-full flex flex-col">
+      <body
+        className={`${inter.className} flex flex-col grow bg-gradient-to-b from-[rgb(var(--background-start-rgb))] via-transparent to-[rgb(var(--background-end-rgb))] min-h-full
+`}
+      >
+        {children}
+      </body>
     </html>
   );
 }

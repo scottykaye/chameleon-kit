@@ -1,11 +1,11 @@
-# `chameleon-kit`
+# `template-library`
 
 TODO
 
 ## Getting Started:
 
 ```bash
-bun add chameleon-kit
+bun add template-library
 ```
 
 ...
