@@ -9,7 +9,7 @@
   "repository": {
     "type": "git",
     "url": "TODO",
-    "directory": "packages/chameleon-kit"
+    "directory": "packages/@chameleon-kit/ui"
   },
   "private": true,
   "sideEffects": false,
