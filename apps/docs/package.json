@@ -9,6 +9,7 @@
     "lint": "biome lint"
   },
   "dependencies": {
+    "@chameleon-kit/ui": "workspace:*",
     "next": "15.0.3-canary.8"
   },
   "devDependencies": {

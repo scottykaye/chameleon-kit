@@ -33,9 +33,6 @@ export function Homepage() {
           <Panel title="Three Title of panel" label="panel3">
             test
           </Panel>
-          <Panel title="Four Title of panel" label="panel4">
-            test
-          </Panel>
         </Accordion>
       </li>
       <li className="flex flex-col gap-4">

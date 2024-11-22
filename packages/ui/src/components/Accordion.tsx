@@ -33,6 +33,7 @@ const AccordionContext = createContext<Accordion.Context>({});
 
 export function Accordion({ children, className }: Accordion.Props) {
   const [keyboardControls] = useState(() => new KeyboardNav("vertical"));
+
   const [useKeyboardNav] = useState(() =>
     createKeyboardNavHook(keyboardControls),
   );
