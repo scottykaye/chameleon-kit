@@ -1,23 +1,11 @@
 import { cva } from "class-variance-authority";
+import type { VariantProps } from "class-variance-authority";
 import NextLink from "next/link";
 import type { ButtonHTMLAttributes, ElementType, Ref } from "react";
 import { cn } from "../utils/cn";
 
-namespace Button {
-  export type Props = ButtonHTMLAttributes<
-    HTMLButtonElement | HTMLAnchorElement
-  > & {
-    ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
-    is?: "button" | "a" | typeof NextLink;
-    variant?: "primary" | "outline";
-    size?: "default";
-    isFullWidth?: boolean;
-    className?: string;
-  };
-}
-
 const defaultState =
-  "whitespace-nowrap rounded cursor-pointer ring-offset-background transition-colorstransition-[transform,background-color,color] [&:not(:disabled)]:active:translate-y-0.5 font-aspekta leading-none focus:ring-2 focus:ring-blue-700 focus:ring-offset-2";
+  "whitespace-nowrap rounded cursor-pointer ring-offset-background transition-[transform,background-color,color] [&:not(:disabled)]:active:translate-y-0.5 font-aspekta leading-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-4 focus-visible:ring-offset-surface-200";
 const disabledState =
   "disabled:text-gray-400 disabled:bg-gray-300 disabled:cursor-not-allowed";
 
@@ -25,12 +13,19 @@ const buttonVariants = cva(`${defaultState} ${disabledState}`, {
   variants: {
     variant: {
       primary:
-        "text-white bg-blue-500 [&:is(:hover,:focus):not(:disabled)]:bg-blue-700",
+        "text-white bg-primary-500 [&:is(:hover,:focus):not(:disabled)]:bg-primary-700",
       outline:
-        "text-blue-600 bg-transparent border border-gray-400 [&:is(:hover,:focus):not(:disabled)]:border-blue-900 [&:is(:hover,:focus):not(:disabled)]:text-blue-900",
+        "text-primary-600 dark:text-primary-300 bg-transparent border border-primary-600 dark:border-primary-300 [&:is(:hover,:focus):not(:disabled)]:border-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:border-primary-100 [&:is(:hover,:focus):not(:disabled)]:text-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:text-primary-100",
+      ghost:
+        "text-primary-600 dark:text-primary-300 bg-transparent [&:is(:hover,:focus):not(:disabled)]:text-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:text-primary-100 [&:is(:hover,:focus):not(:disabled)]:bg-primary-300 [&:is(:hover,:focus):not(:disabled)]:dark:bg-primary-700",
     },
     size: {
       default: "h-12 px-6 [&:not(.button--link)]:text-md",
+      xs: "h-5 px-1 [&:not(.button--link)]:text-md",
+      sm: "h-7 px-1 [&:not(.button--link)]:text-md",
+      md: "h-9 px-2 [&:not(.button--link)]:text-md",
+      lg: "h-14 px-2 [&:not(.button--link)]:text-md",
+      xl: "h-16 px-6 [&:not(.button--link)]:text-md",
     },
     isFullWidth: {
       true: "w-full",
@@ -41,6 +36,16 @@ const buttonVariants = cva(`${defaultState} ${disabledState}`, {
     size: "default",
   },
 });
+
+namespace Button {
+  export type Props = ButtonHTMLAttributes<
+    HTMLButtonElement | HTMLAnchorElement
+  > & {
+    ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
+    is?: "button" | "a" | typeof NextLink;
+    className?: string;
+  } & VariantProps<typeof buttonVariants>;
+}
 
 export function Button({
   variant = "primary",

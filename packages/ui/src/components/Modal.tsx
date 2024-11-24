@@ -26,6 +26,9 @@ namespace Modal {
     footer?: ReactNode | string;
     header?: ReactNode | string;
     size?: keyof typeof SIZES;
+    // Will have to find a way to determine if labels and descriptions are required even though they are required for accessibility
+    label?: string;
+    description?: string;
   };
 }
 
@@ -35,6 +38,8 @@ export function Modal({
   onClose,
   footer,
   header,
+  description,
+  label,
   size = "md",
 }: Modal.Props) {
   const ref = useRef<null | HTMLDialogElement>(null);
@@ -88,9 +93,11 @@ export function Modal({
         ref={ref}
         onKeyDown={handleKeyDown}
         className={cn(
-          "backdrop:cursor-pointer transition-opacity backdrop:transition-[backdrop-filter] backdrop:backdrop-blur grid place-items-center [&:not([open])]:pointer-events-none [&:not([open])]:opacity-0 fixed inset-0 max-w-xl backdrop:bg-black/50 p-4 z-100 m-auto",
+          "backdrop:cursor-pointer transition-opacity backdrop:transition-[backdrop-filter] backdrop:backdrop-blur grid place-items-center [&:not([open])]:pointer-events-none [&:not([open])]:opacity-0 fixed inset-0 max-w-xl backdrop:bg-black/50 p-4 z-100 m-auto bg-surface-100 text-black dark:text-white",
           SIZES[size as keyof typeof SIZES],
         )}
+        aria-labelledby={label}
+        aria-describedby={description}
       >
         <form action="dialog">
           <header className="flex justify-between mb-5 gap-2 text-pretty">

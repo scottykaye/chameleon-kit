@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Outfit } from "next/font/google";
+import type { ReactNode } from "react";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const outfit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,12 +13,12 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en" className="min-h-full flex flex-col">
       <body
-        className={`${inter.className} flex flex-col grow bg-gradient-to-b from-[rgb(var(--background-start-rgb))] via-transparent to-[rgb(var(--background-end-rgb))] min-h-full
+        className={`${outfit.className} flex flex-col grow bg-gradient-to-b from-[rgb(var(--background-start-rgb))] to-[rgb(var(--background-end-rgb))] min-h-full
 `}
       >
         {children}

@@ -23,6 +23,10 @@
       "import": "./dist/components/Accordion.js",
       "types": "./dist/components/Accordion.d.ts"
     },
+    "./Alert": {
+      "import": "./dist/components/Alert.js",
+      "types": "./dist/components/Alert.d.ts"
+    },
     "./Button": {
       "import": "./dist/components/Button.js",
       "types": "./dist/components/Button.d.ts"
@@ -42,6 +46,10 @@
     "./Modal": {
       "import": "./dist/components/Modal.js",
       "types": "./dist/components/Modal.d.ts"
+    },
+    "./Sidebar": {
+      "import": "./dist/components/Sidebar.js",
+      "types": "./dist/components/Sidebar.d.ts"
     },
     "./Text": {
       "import": "./dist/components/Text.js",

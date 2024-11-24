@@ -52,7 +52,7 @@ export function Heading({
     <Element
       className={cn(
         size ? SIZES[size as SizeOption] : classSize,
-        "text-pretty font-serif",
+        "text-pretty",
         className,
       )}
       {...props}
