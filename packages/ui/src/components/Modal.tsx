@@ -26,8 +26,9 @@ namespace Modal {
     footer?: ReactNode | string;
     header?: ReactNode | string;
     size?: keyof typeof SIZES;
-    label: string;
-    description: string;
+    // Will have to find a way to determine if labels and descriptions are required even though they are required for accessibility
+    label?: string;
+    description?: string;
   };
 }
 
