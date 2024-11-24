@@ -93,7 +93,7 @@ export function Modal({
         ref={ref}
         onKeyDown={handleKeyDown}
         className={cn(
-          "backdrop:cursor-pointer transition-opacity backdrop:transition-[backdrop-filter] backdrop:backdrop-blur grid place-items-center [&:not([open])]:pointer-events-none [&:not([open])]:opacity-0 fixed inset-0 max-w-xl backdrop:bg-black/50 p-4 z-100 m-auto",
+          "backdrop:cursor-pointer transition-opacity backdrop:transition-[backdrop-filter] backdrop:backdrop-blur grid place-items-center [&:not([open])]:pointer-events-none [&:not([open])]:opacity-0 fixed inset-0 max-w-xl backdrop:bg-black/50 p-4 z-100 m-auto bg-surface-100 text-black dark:text-white",
           SIZES[size as keyof typeof SIZES],
         )}
         aria-labelledby={label}

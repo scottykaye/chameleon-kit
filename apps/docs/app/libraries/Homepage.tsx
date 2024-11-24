@@ -109,8 +109,10 @@ export function Homepage() {
         </Button>
       </Sidebar>
       <SidebarPage>
-        <header className="flex items-center gap-4 justify-center sticky top-0 mt-[calc(50vh-100px)] bg-surface-100/20 backdrop-blur after:h-0.5 after:absolute after:inset-x-0 after:bottom-0 after:bg-gradient-to-r after:from-transparent after:via-primary-500 after:to-transparent">
-          <h1 className="text-7xl font-bold">Chameleon Kit</h1>
+        <header className="flex items-center gap-4 justify-center sticky top-0 mt-[calc(50vh-200px)] bg-surface-100/40 backdrop-blur after:h-0.5 after:absolute after:inset-x-0 after:bottom-0 after:bg-gradient-to-r after:from-transparent after:via-primary-500 after:to-transparent">
+          <h1 className="font-bold text-[clamp(2rem,3vw,5rem)] text-balance">
+            Chameleon Kit
+          </h1>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlSpace="preserve"
@@ -169,8 +171,10 @@ export function Homepage() {
             />
           </svg>
         </header>
-        <h3 className="text-4xl mx-auto flex justify-center mt-5">
-          A component UI library for React applications.
+        <h3 className="mx-auto text-center max-w-screen-xl mt-5 font-bold tracking-tight text-[clamp(1rem,5vw,5rem)] text-pretty leading-tight px-2">
+          A <span className="text-[#acfa70]">component UI library</span> for{" "}
+          <span className="text-[#00a3a4]">React</span> &{" "}
+          <span className="text-[#00d493]">Next.js</span> applications.
         </h3>
         <div className="h-[200svh]">
           <ul className="grow grid grid-cols-1  place-content-center max-w-3xl mx-auto gap-10 p-4 min-h-full">
