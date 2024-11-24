@@ -4,10 +4,36 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-start-rgb: 255 255 255;
+  --background-end-rgb: 214 219 220;
   --animation-slide-in-up: slide-in-up 0.5s var(--ease-squish-3);
+
+  --primary-100: 224 231 255;
+  --primary-200: 199 210 254;
+  --primary-300: 165 180 252;
+  --primary-400: 129 140 248;
+  --primary-500: 99 102 241;
+  --primary-600: 79 70 229;
+  --primary-700: 67 56 202;
+  --primary-800: 55 48 163;
+  --primary-900: 49 46 129;
+
+  --surface-100: 255 255 255;
+  --surface-200: 214 219 220;
+
+  @media (prefers-color-scheme: dark) {
+    --foreground-rgb: 255 255 255;
+    /*
+  * I like this color but it's too light for this
+  * --background-start-rgb: 41, 47, 86;*/
+    --background-start-rgb: 32 32 49;
+    --background-end-rgb: 41 47 86;
+
+    --surface-100: 32 32 49;
+    --surface-200: 41 47 86;
+  }
 }
+
 @keyframes slide-in-up {
   0% {
     transform: translateY(100%);

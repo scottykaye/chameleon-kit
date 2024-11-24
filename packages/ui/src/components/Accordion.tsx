@@ -7,6 +7,7 @@ import {
   type ReactNode,
   createContext,
   useContext,
+  useId,
   useState,
 } from "react";
 import { cn } from "../utils/cn";
@@ -38,9 +39,14 @@ export function Accordion({ children, className }: Accordion.Props) {
     createKeyboardNavHook(keyboardControls),
   );
 
+  const accordionId = useId();
+
   return (
     <AccordionContext.Provider value={{ keyboardControls, useKeyboardNav }}>
-      <div id="accordionGroup" className={cn("bg-white rounded-sm", className)}>
+      <div
+        id={`accordionGroup-${accordionId}`}
+        className={cn("bg-white dark:bg-black rounded-sm", className)}
+      >
         {children}
       </div>
     </AccordionContext.Provider>
@@ -81,7 +87,7 @@ export function Panel({
   }
 
   return (
-    <div className="border-b border-gray-400 p-2">
+    <div className="border-b border-gray-400 dark:border-gray-600 p-2">
       <h3>
         <button
           type="button"

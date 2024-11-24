@@ -15,7 +15,7 @@ namespace Card {
 const cardVariants = cva("p-4", {
   variants: {
     variant: {
-      default: "bg-white shadow-md rounded-sm",
+      default: "bg-white dark:bg-black shadow-md rounded-sm",
     },
   },
   defaultVariants: {
