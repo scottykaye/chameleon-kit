@@ -51,8 +51,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/favicons/chameleon-kit.png",
-        width: 5472,
-        height: 3648,
+        width: 2028,
+        height: 820,
         alt: "Chameleon Kit | A component UI library for React Staff Software Engineer Next.js applications.",
       },
     ],
@@ -64,8 +64,8 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/favicons/chameleon-kit.png",
-        width: 600,
-        height: 314,
+        width: 2028,
+        height: 820,
         alt: "Chameleon Kit | A component UI library for React Staff Software Engineer Next.js applications.",
       },
     ],
