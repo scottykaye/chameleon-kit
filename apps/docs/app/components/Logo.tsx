@@ -1,5 +1,3 @@
-import { cn } from "~/utils/cn";
-
 export function Logo({
   width = 60,
   height = 60,
@@ -16,7 +14,7 @@ export function Logo({
       viewBox="0 0 512 512"
       width={width}
       height={height}
-      className={cn("m-2 block", className)}
+      className={className}
     >
       <title>Chameleon Kit Logo</title>
       <desc>A playful chameleon logo</desc>

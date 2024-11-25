@@ -39,7 +39,7 @@ const buttonVariants = cva(`${defaultState} ${disabledState}`, {
 
 namespace Button {
   export type Props = ButtonHTMLAttributes<
-    HTMLButtonElement | HTMLAnchorElement
+    HTMLButtonElement | HTMLAnchorElement | typeof NextLink
   > & {
     ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
     is?: "button" | "a" | typeof NextLink;
