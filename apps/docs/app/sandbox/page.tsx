@@ -1,5 +1,5 @@
-import { Homepage } from "./../libraries/Homepage";
+import { Sandbox as SandboxDemo } from "../libraries/Sandbox";
 
 export default function Sandbox() {
-  return <Homepage />;
+  return <SandboxDemo />;
 }
