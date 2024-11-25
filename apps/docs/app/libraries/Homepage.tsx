@@ -390,7 +390,7 @@ export function Homepage({
           <span className="text-[#00a3a4]">React</span> &{" "}
           <span className="text-[#00d493]">Next.js</span> applications.
         </h3>
-        <div className="mt-[50vh] h-[200svh]">
+        <div className="mt-[50vh]">
           <Sandbox />
         </div>
       </SidebarPage>
