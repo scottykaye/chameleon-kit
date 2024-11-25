@@ -75,15 +75,19 @@ export function Homepage({
         </header>
         <menu className="grow overflow-y-auto scroll-smooth max-w-full scrollbar p-2">
           <li>
-            <Link
+            <Button
               href="/"
-              className={cn("flex items-center justify-center", {
-                "aspect-square ": !isExpanded,
-              })}
+              is={Link}
+              className={cn(
+                "flex items-center justify-center [&:is(:hover,:focus)]:bg-primary-300 [&:is(:hover,:focus)]:dark:bg-primary-700 rounded",
+                {
+                  "aspect-square ": !isExpanded,
+                },
+              )}
             >
               <Home />
               {isExpanded ? "Introduction" : null}
-            </Link>
+            </Button>
           </li>
           <li>
             <Link
@@ -227,8 +231,8 @@ export function Homepage({
         </Button>
       </Sidebar>
       <SidebarPage>
-        <header className="flex items-center gap-4 justify-center sticky top-0 mt-[calc(50vh-200px)] bg-surface-100/40 backdrop-blur after:h-0.5 after:absolute after:inset-x-0 after:bottom-0 after:bg-gradient-to-r after:from-transparent after:via-primary-500 after:to-transparent">
-          <h1 className="font-bold text-[clamp(2rem,3vw,5rem)] text-balance">
+        <header className="flex items-center gap-4 justify-center sticky top-0 mt-[calc(50vh-200px)] bg-surface-100/40 backdrop-blur after:h-0.5 after:absolute after:inset-x-0 after:bottom-0 after:bg-gradient-to-r after:from-transparent after:via-primary-500 after:to-transparent p-2">
+          <h1 className="font-bold text-[clamp(1.75rem,5vw,5rem)] text-balance">
             Chameleon Kit
           </h1>
           <svg
@@ -237,6 +241,8 @@ export function Homepage({
             viewBox="0 0 512 512"
             width="100"
             height="100"
+            className="basis-1/12"
+            role="graphics-symbol"
           >
             <title>Chameleon Kit Logo</title>
             <desc>A playful chameleon</desc>
@@ -289,12 +295,12 @@ export function Homepage({
             />
           </svg>
         </header>
-        <h3 className="mx-auto text-center max-w-screen-xl mt-5 font-bold tracking-tight text-[clamp(1rem,5vw,5rem)] text-pretty leading-tight px-2">
+        <h3 className="mx-auto max-w-screen-lg mt-5 font-bold tracking-tight text-[clamp(2rem,5vw,5rem)] text-pretty leading-tight px-4">
           A <span className="text-[#acfa70]">component UI library</span> for{" "}
           <span className="text-[#00a3a4]">React</span> &{" "}
           <span className="text-[#00d493]">Next.js</span> applications.
         </h3>
-        <div className="h-[200svh]">
+        <div className="mt-[50vh] h-[200svh]">
           <Sandbox />
         </div>
       </SidebarPage>
