@@ -1,6 +1,7 @@
 "use client";
 
 import { Button } from "@chameleon-kit/ui/Button";
+import { KeyboardNav, createKeyboardNavHook } from "accessible-navigation";
 
 import {
   Sidebar,
@@ -10,6 +11,7 @@ import {
 import {
   Accessibility,
   ArrowLeft,
+  Github,
   Home,
   Menu,
   MonitorCog,
@@ -21,13 +23,147 @@ import {
   SwatchBook,
 } from "lucide-react";
 import NextLink from "next/link";
-import { useState } from "react";
+import {
+  type KeyboardEvent,
+  type ReactNode,
+  createContext,
+  useContext,
+  useState,
+} from "react";
 import { Logo } from "~/components/Logo";
 import { cn } from "~/utils/cn";
 import { Sandbox } from "./Sandbox";
 
 const COLLAPSED_SIZE = "90px";
 const EXPANDED_SIZE = "300px";
+
+// this will not be a homepage long term, naming will change
+namespace Homepage {
+  export interface Context {
+    keyboardControls?: KeyboardNav;
+    useKeyboardNav?: ReturnType<typeof createKeyboardNavHook>;
+  }
+}
+
+const HomepageContext = createContext<Homepage.Context>({});
+
+const MenuItem = ({
+  href,
+  icon,
+  label,
+  isExpanded,
+}: {
+  href: string;
+  icon: ReactNode;
+  label: string;
+  isExpanded: boolean;
+}) => {
+  const { keyboardControls, useKeyboardNav } = useContext(HomepageContext);
+
+  if (
+    typeof useKeyboardNav === "undefined" ||
+    typeof keyboardControls === "undefined"
+  ) {
+    throw new Error(
+      "`useKeyboardNav` and `keyboardControls` props must be defined.",
+    );
+  }
+
+  const ref = useKeyboardNav(label) as (
+    instance: HTMLAnchorElement | null,
+  ) => void;
+
+  function onKeyDown(event: KeyboardEvent<HTMLAnchorElement>) {
+    if (keyboardControls) {
+      keyboardControls.update(event.nativeEvent, label);
+    }
+  }
+
+  return (
+    <li>
+      <NextLink
+        ref={ref}
+        href={href}
+        className={cn(
+          "flex items-center [&:is(:hover,:focus)]:bg-primary-300 [&:is(:hover,:focus)]:dark:bg-primary-700 rounded transition-[backgound-color,border-color,color,transform] active:translate-y-1",
+        )}
+        onKeyDown={onKeyDown}
+      >
+        <span className="m-6">{icon}</span>
+        {isExpanded ? label : null}
+      </NextLink>
+    </li>
+  );
+};
+const SubMenuParent = ({
+  icon,
+  label,
+  isExpanded,
+  children,
+}: {
+  icon: ReactNode;
+  label: string;
+  isExpanded: boolean;
+  children?: ReactNode;
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const { keyboardControls, useKeyboardNav } = useContext(HomepageContext);
+
+  if (
+    typeof useKeyboardNav === "undefined" ||
+    typeof keyboardControls === "undefined"
+  ) {
+    throw new Error(
+      "`useKeyboardNav` and `keyboardControls` props must be defined.",
+    );
+  }
+
+  const ref = useKeyboardNav(label) as (
+    instance: HTMLButtonElement | null,
+  ) => void;
+
+  function onKeyDown(event: KeyboardEvent<HTMLButtonElement>) {
+    if (keyboardControls) {
+      keyboardControls.update(event.nativeEvent, label);
+    }
+  }
+
+  return (
+    <li>
+      <h3>
+        <Button
+          ref={ref}
+          onKeyDown={onKeyDown}
+          variant="ghost"
+          isFullWidth
+          onClick={() => setIsOpen((prev) => !prev)}
+          className={cn("flex items-center h-auto p-0")}
+        >
+          <span className="m-6">{icon}</span>
+          {isExpanded ? label : null}
+        </Button>
+      </h3>
+      {isOpen ? children : null}
+    </li>
+  );
+};
+
+function MenuContainer({ children }: { children: ReactNode }) {
+  const [keyboardControls] = useState(() => new KeyboardNav("vertical"));
+
+  const [useKeyboardNav] = useState(() =>
+    createKeyboardNavHook(keyboardControls),
+  );
+
+  return (
+    <HomepageContext.Provider value={{ keyboardControls, useKeyboardNav }}>
+      <menu className="grow overflow-x-clip overflow-y-auto scroll-smooth max-w-full scrollbar p-2">
+        {children}
+      </menu>
+    </HomepageContext.Provider>
+  );
+}
 
 export function Homepage({
   sidebarSize,
@@ -73,99 +209,57 @@ export function Homepage({
             {isExpanded ? <ArrowLeft /> : <Menu />}
           </Button>
         </header>
-        <menu className="grow overflow-y-auto scroll-smooth max-w-full scrollbar p-2">
-          <li>
-            <NextLink
-              href="/"
-              className={cn(
-                "flex items-center justify-center [&:is(:hover,:focus)]:bg-primary-300 [&:is(:hover,:focus)]:dark:bg-primary-700 rounded",
-                {
-                  "aspect-square ": !isExpanded,
-                },
-              )}
-            >
-              <Home />
-              {isExpanded ? "Introduction" : null}
-            </NextLink>
-          </li>
-          <li>
-            <NextLink
-              href="/"
-              className={cn("flex items-center justify-center", {
-                "aspect-square ": !isExpanded,
-              })}
-            >
-              <SwatchBook />
-              {isExpanded ? "Theming" : null}
-            </NextLink>
-          </li>
-          <li>
-            <NextLink
-              href="/"
-              className={cn("flex items-center justify-center", {
-                "aspect-square ": !isExpanded,
-              })}
-            >
-              <Palette />
-              {isExpanded ? "Palette" : null}
-            </NextLink>
-          </li>
-          <li>
-            <h3
-              className={cn("flex items-center justify-center", {
-                "aspect-square ": !isExpanded,
-              })}
-            >
-              <PackageOpen />
-              {isExpanded ? "Packages" : null}
-            </h3>
-
-            <menu>
-              <li>
-                <NextLink
-                  href="/"
-                  className={cn("flex items-center justify-center", {
-                    "aspect-square ": !isExpanded,
-                  })}
-                >
-                  <Logo width={24} height={24} />
-                  {isExpanded ? "Chameleon Kit" : null}
-                </NextLink>
-              </li>
-              <li>
-                <NextLink
-                  href="https://theme-handler-docs.vercel.app/"
-                  className={cn("flex items-center justify-center", {
-                    "aspect-square ": !isExpanded,
-                  })}
-                >
-                  <SunMoon />
-                  {isExpanded ? "Theme Handler" : null}
-                </NextLink>
-              </li>
-              <li>
-                <NextLink
-                  href="https://github.com/scottykaye/accessible-navigation"
-                  className={cn("flex items-center justify-center", {
-                    "aspect-square ": !isExpanded,
-                  })}
-                >
-                  <Accessibility />
-                  {isExpanded ? "Accessible Navigation" : null}
-                </NextLink>
-              </li>
+        <MenuContainer>
+          <MenuItem
+            href="/"
+            isExpanded={isExpanded}
+            label="Introduction"
+            icon={<Home />}
+          />
+          <MenuItem
+            href="/"
+            isExpanded={isExpanded}
+            label="Theming"
+            icon={<SwatchBook />}
+          />
+          <MenuItem
+            href="/"
+            isExpanded={isExpanded}
+            label="Colors"
+            icon={<Palette />}
+          />
+          <SubMenuParent
+            label="Packages"
+            icon={<PackageOpen />}
+            isExpanded={isExpanded}
+          >
+            <menu className={isExpanded ? "hidden" : "hidden"}>
+              <MenuItem
+                href="/"
+                isExpanded={isExpanded}
+                label="Chameleon Kit"
+                icon={<Logo width={24} height={24} />}
+              />
+              <MenuItem
+                href="https://theme-handler-docs.vercel.app"
+                isExpanded={isExpanded}
+                label="Theme Handler"
+                icon={<SunMoon />}
+              />
+              <MenuItem
+                href="https://github.com/scottykaye/accessible-navigation"
+                isExpanded={isExpanded}
+                label="Accessible Navigation"
+                icon={<Accessibility />}
+              />
             </menu>
-          </li>
-          <li>
-            <h3
-              className={cn("flex items-center justify-center", {
-                "aspect-square ": !isExpanded,
-              })}
-            >
-              <MonitorCog />
-              {isExpanded ? "Installations" : null}
-            </h3>
-            <menu className={isExpanded ? "block" : "hidden"}>
+          </SubMenuParent>
+          <SubMenuParent
+            label="Installations"
+            icon={<MonitorCog />}
+            isExpanded={isExpanded}
+          >
+            <menu className={isExpanded ? "hidden" : "hidden"}>
               <li>
                 <NextLink href="/">Next.js</NextLink>
               </li>
@@ -179,17 +273,13 @@ export function Homepage({
                 <NextLink href="/">Astro</NextLink>
               </li>
             </menu>
-          </li>
-          <li>
-            <h3
-              className={cn("flex items-center justify-center", {
-                "aspect-square ": !isExpanded,
-              })}
-            >
-              <Puzzle />
-              {isExpanded ? "Components" : null}
-            </h3>
-            <menu className={isExpanded ? "block" : "hidden"}>
+          </SubMenuParent>
+          <SubMenuParent
+            label="Components"
+            icon={<Puzzle />}
+            isExpanded={isExpanded}
+          >
+            <menu className={isExpanded ? "hidden" : "hidden"}>
               <li>
                 <NextLink href="/">Accordion</NextLink>
               </li>
@@ -218,13 +308,14 @@ export function Homepage({
                 <NextLink href="/">Text</NextLink>
               </li>
             </menu>
-          </li>
-          <li>
-            <NextLink href="https://github.com/chameleon-kit">
-              {isExpanded ? "Github" : null}
-            </NextLink>
-          </li>
-        </menu>
+          </SubMenuParent>
+          <MenuItem
+            href="https://github.com/chameleon-kit"
+            isExpanded={isExpanded}
+            label="Github"
+            icon={<Github />}
+          />
+        </MenuContainer>
         <Button type="button" variant="ghost" className="m-4 self-start">
           <Settings />
         </Button>
