@@ -20,7 +20,7 @@ const buttonVariants = cva(`${defaultState} ${disabledState}`, {
         "text-primary-600 dark:text-primary-300 bg-transparent [&:is(:hover,:focus):not(:disabled)]:text-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:text-primary-100 [&:is(:hover,:focus):not(:disabled)]:bg-primary-300 [&:is(:hover,:focus):not(:disabled)]:dark:bg-primary-700",
     },
     size: {
-      default: "h-12 px-6 [&:not(.button--link)]:text-md",
+      default: "h-12 px-4 [&:not(.button--link)]:text-md",
       xs: "h-5 px-1 [&:not(.button--link)]:text-md",
       sm: "h-7 px-1 [&:not(.button--link)]:text-md",
       md: "h-9 px-2 [&:not(.button--link)]:text-md",

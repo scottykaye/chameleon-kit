@@ -60,6 +60,10 @@ body {
 }
 
 @layer utilities {
+  .scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--primary-500)) rgb(var(--surface-200));
+  }
   .text-balance {
     text-wrap: balance;
   }
