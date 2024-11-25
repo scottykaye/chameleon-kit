@@ -9,8 +9,7 @@ export const metadata: Metadata = {
     default: "Chameleon Kit",
     template: "%s | Chameleon Kit",
   },
-  description:
-    "Scott Kaye is a Frontend Software Engineer located in Boston, Massachusetts with a strong background in UI, React, Accessibility and Next.js",
+  description: "A component UI library for React & Next.js applications.",
   icons: [
     {
       url: `/favicons/${
@@ -43,7 +42,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Chameleon Kit",
     description:
-      "Chameleon Kit | A component UI library for React Staff Software Engineer Next.js applications.",
+      "Chameleon Kit | A component UI library for React & Next.js applications.",
     url: "https://chameleon-kit.com",
     siteName: "Chameleon Kit",
     type: "website",
@@ -53,7 +52,7 @@ export const metadata: Metadata = {
         url: "/favicons/chameleon-kit.png",
         width: 2028,
         height: 820,
-        alt: "Chameleon Kit | A component UI library for React Staff Software Engineer Next.js applications.",
+        alt: "Chameleon Kit |A component UI library for React & Next.js applications.",
       },
     ],
   },
@@ -66,7 +65,7 @@ export const metadata: Metadata = {
         url: "/favicons/chameleon-kit.png",
         width: 2028,
         height: 820,
-        alt: "Chameleon Kit | A component UI library for React Staff Software Engineer Next.js applications.",
+        alt: "Chameleon Kit | A component UI library for React & Next.js applications.",
       },
     ],
   },
