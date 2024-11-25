@@ -20,7 +20,7 @@ import {
   SunMoon,
   SwatchBook,
 } from "lucide-react";
-import Link from "next/link";
+import NextLink from "next/link";
 import { useState } from "react";
 import { Logo } from "~/components/Logo";
 import { cn } from "~/utils/cn";
@@ -75,9 +75,8 @@ export function Homepage({
         </header>
         <menu className="grow overflow-y-auto scroll-smooth max-w-full scrollbar p-2">
           <li>
-            <Button
+            <NextLink
               href="/"
-              is={Link}
               className={cn(
                 "flex items-center justify-center [&:is(:hover,:focus)]:bg-primary-300 [&:is(:hover,:focus)]:dark:bg-primary-700 rounded",
                 {
@@ -87,10 +86,10 @@ export function Homepage({
             >
               <Home />
               {isExpanded ? "Introduction" : null}
-            </Button>
+            </NextLink>
           </li>
           <li>
-            <Link
+            <NextLink
               href="/"
               className={cn("flex items-center justify-center", {
                 "aspect-square ": !isExpanded,
@@ -98,10 +97,10 @@ export function Homepage({
             >
               <SwatchBook />
               {isExpanded ? "Theming" : null}
-            </Link>
+            </NextLink>
           </li>
           <li>
-            <Link
+            <NextLink
               href="/"
               className={cn("flex items-center justify-center", {
                 "aspect-square ": !isExpanded,
@@ -109,7 +108,7 @@ export function Homepage({
             >
               <Palette />
               {isExpanded ? "Palette" : null}
-            </Link>
+            </NextLink>
           </li>
           <li>
             <h3
@@ -123,7 +122,7 @@ export function Homepage({
 
             <menu>
               <li>
-                <Link
+                <NextLink
                   href="/"
                   className={cn("flex items-center justify-center", {
                     "aspect-square ": !isExpanded,
@@ -131,10 +130,10 @@ export function Homepage({
                 >
                   <Logo width={24} height={24} />
                   {isExpanded ? "Chameleon Kit" : null}
-                </Link>
+                </NextLink>
               </li>
               <li>
-                <Link
+                <NextLink
                   href="https://theme-handler-docs.vercel.app/"
                   className={cn("flex items-center justify-center", {
                     "aspect-square ": !isExpanded,
@@ -142,10 +141,10 @@ export function Homepage({
                 >
                   <SunMoon />
                   {isExpanded ? "Theme Handler" : null}
-                </Link>
+                </NextLink>
               </li>
               <li>
-                <Link
+                <NextLink
                   href="https://github.com/scottykaye/accessible-navigation"
                   className={cn("flex items-center justify-center", {
                     "aspect-square ": !isExpanded,
@@ -153,7 +152,7 @@ export function Homepage({
                 >
                   <Accessibility />
                   {isExpanded ? "Accessible Navigation" : null}
-                </Link>
+                </NextLink>
               </li>
             </menu>
           </li>
@@ -168,16 +167,16 @@ export function Homepage({
             </h3>
             <menu className={isExpanded ? "block" : "hidden"}>
               <li>
-                <Link href="/">Next.js</Link>
+                <NextLink href="/">Next.js</NextLink>
               </li>
               <li>
-                <Link href="/">Vite</Link>
+                <NextLink href="/">Vite</NextLink>
               </li>
               <li>
-                <Link href="/">Remix</Link>
+                <NextLink href="/">Remix</NextLink>
               </li>
               <li>
-                <Link href="/">Astro</Link>
+                <NextLink href="/">Astro</NextLink>
               </li>
             </menu>
           </li>
@@ -192,38 +191,38 @@ export function Homepage({
             </h3>
             <menu className={isExpanded ? "block" : "hidden"}>
               <li>
-                <Link href="/">Accordion</Link>
+                <NextLink href="/">Accordion</NextLink>
               </li>
               <li>
-                <Link href="/">Alert</Link>
+                <NextLink href="/">Alert</NextLink>
               </li>
               <li>
-                <Link href="/">Button</Link>
+                <NextLink href="/">Button</NextLink>
               </li>
               <li>
-                <Link href="/">Card</Link>
+                <NextLink href="/">Card</NextLink>
               </li>
               <li>
-                <Link href="/">Heading</Link>
+                <NextLink href="/">Heading</NextLink>
               </li>
               <li>
-                <Link href="/">Input</Link>
+                <NextLink href="/">Input</NextLink>
               </li>
               <li>
-                <Link href="/">Modal</Link>
+                <NextLink href="/">Modal</NextLink>
               </li>
               <li>
-                <Link href="/">Sidebar</Link>
+                <NextLink href="/">Sidebar</NextLink>
               </li>
               <li>
-                <Link href="/">Text</Link>
+                <NextLink href="/">Text</NextLink>
               </li>
             </menu>
           </li>
           <li>
-            <Link href="https://github.com/chameleon-kit">
+            <NextLink href="https://github.com/chameleon-kit">
               {isExpanded ? "Github" : null}
-            </Link>
+            </NextLink>
           </li>
         </menu>
         <Button type="button" variant="ghost" className="m-4 self-start">
