@@ -16,9 +16,12 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className="min-h-full flex flex-col">
+    <html
+      lang="en"
+      className="min-h-full flex flex-col bg-[rgb(var(--background-start-rgb))] bg-gradient-to-b from-[rgb(var(--background-start-rgb))] to-[rgb(var(--background-end-rgb))]"
+    >
       <body
-        className={`${outfit.className} flex flex-col grow bg-gradient-to-b from-[rgb(var(--background-start-rgb))] to-[rgb(var(--background-end-rgb))] min-h-full
+        className={`${outfit.className} flex flex-col grow min-h-full
 `}
       >
         {children}

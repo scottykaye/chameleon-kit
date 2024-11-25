@@ -176,7 +176,7 @@ export function Homepage({
   }: Record<"key" | "value", string>) => Promise<{ success: boolean }>;
 }) {
   const [size, setResize] = useState<string | null | (() => string)>(
-    sidebarSize || EXPANDED_SIZE,
+    sidebarSize || COLLAPSED_SIZE,
   );
 
   const isExpanded = size === EXPANDED_SIZE;
