@@ -65,7 +65,7 @@
     "@swc/cli": "0.3.10",
     "@swc/core": "1.4.2",
     "@types/bun": "latest",
-    "hohoro": "0.2.1",
+    "hohoro": "0.3.0",
     "typescript": "5.4.5",
     "class-variance-authority": "0.7.0"
   },

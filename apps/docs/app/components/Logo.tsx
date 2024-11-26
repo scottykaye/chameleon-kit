@@ -1,12 +1,15 @@
+import type { SVGProps } from "react";
+
 export function Logo({
   width = 60,
   height = 60,
   className,
+  ...props
 }: {
   width?: number;
   height?: number;
   className?: string;
-}) {
+} & SVGProps<SVGSVGElement>) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -15,6 +18,7 @@ export function Logo({
       width={width}
       height={height}
       className={className}
+      {...props}
     >
       <title>Chameleon Kit Logo</title>
       <desc>A playful chameleon logo</desc>
