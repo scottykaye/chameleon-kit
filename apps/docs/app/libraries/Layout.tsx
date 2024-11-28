@@ -11,6 +11,7 @@ import {
 import {
   Accessibility,
   ArrowLeft,
+  CookingPot,
   Github,
   Home,
   Menu,
@@ -335,6 +336,13 @@ export function Layout({
             label="Colors"
             icon={<Palette aria-hidden="true" />}
           />
+          <MenuItem
+            href="/recipes"
+            isExpanded={isExpanded}
+            label="Recipes"
+            icon={<CookingPot aria-hidden="true" />}
+          />
+
           <SubMenuParent
             label="Packages"
             icon={<PackageOpen aria-hidden="true" />}
