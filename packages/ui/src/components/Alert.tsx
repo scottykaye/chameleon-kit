@@ -1,5 +1,5 @@
 import { CircleCheck, InfoIcon, OctagonX, TriangleAlert } from "lucide-react";
-import type { ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import { cn } from "../utils/cn";
 
 const VARIANTS = {
@@ -38,7 +38,7 @@ export function Alert({
   className,
   title,
   ...props
-}: Alert.Props) {
+}: Alert.Props): ReactElement {
   return (
     <section
       role="alert"

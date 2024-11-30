@@ -15,7 +15,7 @@ export function Input({
   label,
   hiddenLabel = false,
   ...props
-}: Input.Props) {
+}: Input.Props): ReactElement {
   return (
     <label>
       <span className={cn({ "sr-only": hiddenLabel })}>{label}</span>

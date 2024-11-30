@@ -5,7 +5,7 @@ export default function TopHeaderLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Header />
-      <main className="p-5 max-w-prose">{children}</main>
+      <main className="p-5">{children}</main>
     </>
   );
 }

@@ -1,4 +1,9 @@
-import type { ElementType, HTMLAttributes, ReactNode } from "react";
+import type {
+  ElementType,
+  HTMLAttributes,
+  ReactElement,
+  ReactNode,
+} from "react";
 import { cn } from "../utils/cn";
 
 const SIZES = {
@@ -41,7 +46,7 @@ export function Heading({
   is = "h2",
   size = null,
   ...props
-}: Heading.Props) {
+}: Heading.Props): ReactElement {
   const Element = is;
   const classSize =
     typeof Element === "string" && Object.keys(HEADING).includes(Element)
@@ -49,7 +54,7 @@ export function Heading({
       : null;
 
   return (
-    <Element
+    <h1
       className={cn(
         size ? SIZES[size as SizeOption] : classSize,
         "text-pretty",

@@ -3,6 +3,7 @@
 import { XIcon } from "lucide-react";
 import {
   type KeyboardEvent,
+  type ReactElement,
   type ReactNode,
   useCallback,
   useEffect,
@@ -41,7 +42,7 @@ export function Modal({
   description,
   label,
   size = "md",
-}: Modal.Props) {
+}: Modal.Props): ReactElement {
   const ref = useRef<null | HTMLDialogElement>(null);
 
   const handleCloseModal = useCallback(() => {

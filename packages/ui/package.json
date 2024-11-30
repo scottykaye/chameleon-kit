@@ -15,10 +15,6 @@
   "sideEffects": false,
   "main": "./dist/index.js",
   "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
-    },
     "./Accordion": {
       "import": "./dist/components/Accordion.js",
       "types": "./dist/components/Accordion.d.ts"
@@ -67,7 +63,7 @@
     "@types/bun": "latest",
     "hohoro": "0.3.0",
     "typescript": "5.4.5",
-    "class-variance-authority": "0.7.0"
+    "class-variance-authority": "0.7.1"
   },
   "scripts": {
     "dev": "node --watch-path=./src dev.mjs",
@@ -84,6 +80,7 @@
     "lucide-react": "0.445.0"
   },
   "peerDependencies": {
+    "next": "15.0.3-canary.8",
     "react": "19.0.0-rc-7771d3a7-20240827",
     "react-dom": "19.0.0-rc-7771d3a7-20240827"
   }
