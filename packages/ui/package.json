@@ -35,6 +35,10 @@
       "import": "./dist/components/Card.js",
       "types": "./dist/components/Card.d.ts"
     },
+    "./CopyToClipboard": {
+      "import": "./dist/components/CopyToClipboard.js",
+      "types": "./dist/components/CopyToClipboard.d.ts"
+    },
     "./Heading": {
       "import": "./dist/components/Heading.js",
       "types": "./dist/components/Heading.d.ts"
