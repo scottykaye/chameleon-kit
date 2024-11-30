@@ -1,5 +1,3 @@
-import type { VariantProps } from "class-variance-authority";
-
 import { type VariantProps, cva } from "class-variance-authority";
 import NextLink from "next/link";
 import type {
@@ -53,11 +51,12 @@ const buttonVariants: ReturnType<typeof cva> = cva(
 namespace Button {
   export interface Props
     extends Omit<
-      ButtonHTMLAttributes<
-        HTMLAnchorElement | HTMLButtonElement | typeof NextLink
+        ButtonHTMLAttributes<
+          HTMLAnchorElement | HTMLButtonElement | typeof NextLink
+        >,
+        "is"
       >,
-      "is"
-    > {
+      VariantProps<typeof buttonVariants> {
     ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
     is?: "button" | "a" | typeof NextLink;
     variant?: keyof typeof VARIANTS;
@@ -78,8 +77,7 @@ export function Button({
   className,
   ...props
 }: Button.Props): ReactElement {
-  console.log({ is });
-  let Element: ElementType = is || "button";
+  let Element: ElementType = is;
 
   // if it's a link and disabled, render a span instead of an anchor element
   if ((is === "a" || is === NextLink) && disabled) {

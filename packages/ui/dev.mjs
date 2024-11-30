@@ -1,4 +1,4 @@
-import { runBuild } from "hohoro/experimental";
+import { runBuild } from "hohoro";
 
 await runBuild({
   rootDirectory: process.cwd(),
