@@ -6,7 +6,6 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255 255 255;
   --background-end-rgb: 214 219 220;
-  --animation-slide-in-up: slide-in-up 0.5s var(--ease-squish-3);
 
   --primary-100: 224 231 255;
   --primary-200: 199 210 254;
@@ -42,6 +41,30 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(5%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(5%);
   }
 }
 

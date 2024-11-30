@@ -23,6 +23,10 @@
       "import": "./dist/components/Accordion.js",
       "types": "./dist/components/Accordion.d.ts"
     },
+    "./Autocomplete": {
+      "import": "./dist/components/Autocomplete.js",
+      "types": "./dist/components/Autocomplete.d.ts"
+    },
     "./Alert": {
       "import": "./dist/components/Alert.js",
       "types": "./dist/components/Alert.d.ts"

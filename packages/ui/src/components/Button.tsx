@@ -92,10 +92,7 @@ export function Button({
       {...forwardedProps}
       type={type}
       ref={ref}
-      className={cn(
-        // buttonVariants({ variant, size, isFullWidth }),
-        className,
-      )}
+      className={cn(buttonVariants({ variant, size, isFullWidth }), className)}
     />
   );
 }

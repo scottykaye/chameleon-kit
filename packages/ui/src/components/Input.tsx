@@ -23,7 +23,7 @@ export function Input({
         {...props}
         type={type}
         className={cn(
-          "h-12 w-full rounded border border-gray-500 px-3.5 py-2 transition-colors file:border-0 file:bg-transparent disabled:cursor-not-allowed disabled:bg-gray-300 disabled:border-gray-400",
+          "bg-[var(--background-start-rgb)] text-current h-12 w-full rounded border border-gray-500 px-3.5 py-2 transition-colors file:border-0 file:bg-transparent disabled:cursor-not-allowed disabled:bg-gray-300 disabled:border-gray-400",
         )}
         ref={ref}
       />
