@@ -25,6 +25,11 @@ const config: Config = {
           200: "rgb(var(--surface-200))",
         },
       },
+      animation: {
+        "slide-in-up": "slide-in-up 0.5s ease",
+        "slide-in": "slide-in 0.5s ease",
+        "slide-out": "slide-out 0.5s ease",
+      },
     },
   },
   plugins: [],

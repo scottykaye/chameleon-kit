@@ -1,4 +1,5 @@
 "use client";
+import { CopyToClipboard } from "@chameleon-kit/ui/CopyToClipboard";
 import Link from "next/link";
 import colors from "tailwindcss/colors";
 
@@ -105,12 +106,14 @@ export default function Colors() {
                     {shades.map(({ name, value }) => {
                       return (
                         <li key={`${name}-${value}`}>
-                          <span
-                            style={{ backgroundColor: value }}
-                            className={`block aspect-square rounded-xl border-2 border-black w-full`}
-                          />
-                          <h3>{name}</h3>
-                          <h4>{value}</h4>
+                          <CopyToClipboard copyText={value}>
+                            <span
+                              style={{ backgroundColor: value }}
+                              className={`block aspect-square rounded-xl border-2 border-black w-full`}
+                            />
+                            <h3>{name}</h3>
+                            <h4>{value}</h4>
+                          </CopyToClipboard>
                         </li>
                       );
                     })}

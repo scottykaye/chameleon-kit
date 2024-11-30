@@ -1,5 +1,5 @@
 import { type VariantProps, cva } from "class-variance-authority";
-import type { ElementType, ReactElement, Ref } from "react";
+import type { ElementType, ReactElement, ReactNode, Ref } from "react";
 import { cn } from "../utils/cn";
 
 const VARIANTS = {
@@ -34,6 +34,7 @@ namespace Tag {
     ref?: Ref<HTMLSpanElement | ElementType>;
     is?: "span" | ElementType;
     className?: string;
+    children: ReactNode;
   }
 }
 

@@ -4,6 +4,7 @@ import type {
   ButtonHTMLAttributes,
   ElementType,
   ReactElement,
+  ReactNode,
   Ref,
 } from "react";
 import { cn } from "../utils/cn";
@@ -57,6 +58,7 @@ namespace Button {
     ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
     is?: "button" | "a" | typeof NextLink;
     className?: string;
+    children: ReactNode;
   }
 }
 
@@ -90,10 +92,7 @@ export function Button({
       {...forwardedProps}
       type={type}
       ref={ref}
-      className={cn(
-        // buttonVariants({ variant, size, isFullWidth }),
-        className,
-      )}
+      className={cn(buttonVariants({ variant, size, isFullWidth }), className)}
     />
   );
 }

@@ -54,7 +54,7 @@ export function Heading({
       : null;
 
   return (
-    <h1
+    <Element
       className={cn(
         size ? SIZES[size as SizeOption] : classSize,
         "text-pretty",
