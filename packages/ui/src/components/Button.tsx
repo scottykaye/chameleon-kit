@@ -8,9 +8,9 @@ import type {
 } from "react";
 import { cn } from "../utils/cn";
 
-const defaultState =
+const DEFAULT_STATE =
   "whitespace-nowrap rounded cursor-pointer ring-offset-background transition-[transform,background-color,color] [&:not(:disabled)]:active:translate-y-0.5 font-aspekta leading-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-4 focus-visible:ring-offset-surface-200";
-const disabledState =
+const DISABLED_STATE =
   "disabled:text-gray-400 disabled:bg-gray-300 disabled:cursor-not-allowed";
 
 const VARIANTS = {
@@ -31,22 +31,19 @@ const SIZES = {
   xl: "h-16 px-6 [&:not(.button--link)]:text-md",
 };
 
-const buttonVariants: ReturnType<typeof cva> = cva(
-  `${defaultState} ${disabledState}`,
-  {
-    variants: {
-      variant: VARIANTS,
-      size: SIZES,
-      isFullWidth: {
-        true: "w-full",
-      },
-    },
-    defaultVariants: {
-      variant: "primary",
-      size: "default",
+const buttonVariants = cva(`${DEFAULT_STATE} ${DISABLED_STATE}`, {
+  variants: {
+    variant: VARIANTS,
+    size: SIZES,
+    isFullWidth: {
+      true: "w-full",
     },
   },
-);
+  defaultVariants: {
+    variant: "primary",
+    size: "default",
+  },
+});
 
 namespace Button {
   export interface Props
@@ -59,9 +56,6 @@ namespace Button {
       VariantProps<typeof buttonVariants> {
     ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
     is?: "button" | "a" | typeof NextLink;
-    variant?: keyof typeof VARIANTS;
-    size?: keyof typeof SIZES;
-    isFullWidth?: boolean;
     className?: string;
   }
 }

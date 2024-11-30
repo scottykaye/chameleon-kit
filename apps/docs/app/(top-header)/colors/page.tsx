@@ -1,3 +1,4 @@
+"use client";
 import Link from "next/link";
 import colors from "tailwindcss/colors";
 
@@ -11,7 +12,7 @@ const filteredDeprecated = [
   "warmGray",
   "trueGray",
   "coolGray",
-  "blueGray ",
+  "blueGray",
 ];
 
 const filteredGlobals = [
@@ -65,7 +66,6 @@ for (const color in colors) {
   if (filteredGlobals.includes(color)) {
     continue;
   }
-
   const shades = colors[color as keyof typeof Colors];
   const mappedShades = [];
 
@@ -109,7 +109,8 @@ export default function Colors() {
                             style={{ backgroundColor: value }}
                             className={`block aspect-square rounded-xl border-2 border-black w-full`}
                           />
-                          {name}: {value}
+                          <h3>{name}</h3>
+                          <h4>{value}</h4>
                         </li>
                       );
                     })}

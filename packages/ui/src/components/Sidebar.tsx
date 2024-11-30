@@ -62,7 +62,7 @@ namespace Sidebar {
 
 const SidebarContext = createContext<Sidebar.Context>({});
 
-export function SidebarWrapper({
+function SidebarWrapper({
   children,
   size = "250px",
   anchor = "left",
@@ -103,7 +103,7 @@ export function SidebarWrapper({
   );
 }
 
-export function SidebarPage({ children }: Sidebar.PageProps): ReactElement {
+function SidebarPage({ children }: Sidebar.PageProps): ReactElement {
   const { anchor } = useContext(SidebarContext);
 
   return (
@@ -121,7 +121,7 @@ export function SidebarPage({ children }: Sidebar.PageProps): ReactElement {
   );
 }
 
-export function Sidebar({
+function Sidebar({
   children,
   labelledBy,
   label,
@@ -150,3 +150,5 @@ export function Sidebar({
     </nav>
   );
 }
+
+export { SidebarWrapper, SidebarPage, Sidebar };

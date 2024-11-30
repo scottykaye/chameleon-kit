@@ -15,6 +15,10 @@
   "sideEffects": false,
   "main": "./dist/index.js",
   "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
     "./Accordion": {
       "import": "./dist/components/Accordion.js",
       "types": "./dist/components/Accordion.d.ts"
@@ -46,6 +50,10 @@
     "./Sidebar": {
       "import": "./dist/components/Sidebar.js",
       "types": "./dist/components/Sidebar.d.ts"
+    },
+    "./Tag": {
+      "import": "./dist/components/Tag.js",
+      "types": "./dist/components/Tag.d.ts"
     },
     "./Text": {
       "import": "./dist/components/Text.js",
