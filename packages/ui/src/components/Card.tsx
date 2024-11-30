@@ -1,5 +1,5 @@
 import { cva } from "class-variance-authority";
-import type { ElementType, ReactNode } from "react";
+import type { ElementType, ReactElement, ReactNode } from "react";
 import { cn } from "../utils/cn";
 
 namespace Card {
@@ -29,7 +29,7 @@ export function Card({
   ref,
   className,
   ...props
-}: Card.Props) {
+}: Card.Props): ReactElement {
   let Element: ElementType = is;
   return (
     <Element

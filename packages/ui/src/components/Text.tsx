@@ -1,4 +1,4 @@
-import type { ElementType, ReactNode } from "react";
+import type { ElementType, ReactElement, ReactNode } from "react";
 import { cn } from "../utils/cn";
 
 const SIZE = {
@@ -38,13 +38,11 @@ export function Text({
   size = "default",
   variant = "default",
   ...props
-}: Text.Props) {
+}: Text.Props): ReactElement {
   const Element: ElementType = is;
   const classSize =
     size && Object.keys(SIZE).includes(size) ? SIZE[size as SizeOption] : null;
   const varantClass = VARIANTS[variant as VariantOption];
 
-  return (
-    <Element {...props} className={cn(classSize, varantClass, className)} />
-  );
+  return <p {...props} className={cn(classSize, varantClass, className)} />;
 }

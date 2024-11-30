@@ -1,32 +1,40 @@
-import { cva } from "class-variance-authority";
-import type { VariantProps } from "class-variance-authority";
+import { type VariantProps, cva } from "class-variance-authority";
 import NextLink from "next/link";
-import type { ButtonHTMLAttributes, ElementType, Ref } from "react";
+import type {
+  ButtonHTMLAttributes,
+  ElementType,
+  ReactElement,
+  Ref,
+} from "react";
 import { cn } from "../utils/cn";
 
-const defaultState =
+const DEFAULT_STATE =
   "whitespace-nowrap rounded cursor-pointer ring-offset-background transition-[transform,background-color,color] [&:not(:disabled)]:active:translate-y-0.5 font-aspekta leading-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-4 focus-visible:ring-offset-surface-200";
-const disabledState =
+const DISABLED_STATE =
   "disabled:text-gray-400 disabled:bg-gray-300 disabled:cursor-not-allowed";
 
-const buttonVariants = cva(`${defaultState} ${disabledState}`, {
+const VARIANTS = {
+  primary:
+    "text-white bg-primary-500 [&:is(:hover,:focus):not(:disabled)]:bg-primary-700",
+  outline:
+    "text-primary-600 dark:text-primary-300 bg-transparent border border-primary-600 dark:border-primary-300 [&:is(:hover,:focus):not(:disabled)]:border-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:border-primary-100 [&:is(:hover,:focus):not(:disabled)]:text-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:text-primary-100",
+  ghost:
+    "text-primary-600 dark:text-primary-300 bg-transparent [&:is(:hover,:focus):not(:disabled)]:text-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:text-primary-100 [&:is(:hover,:focus):not(:disabled)]:bg-primary-300 [&:is(:hover,:focus):not(:disabled)]:dark:bg-primary-700",
+};
+
+const SIZES = {
+  default: "h-12 px-4 [&:not(.button--link)]:text-md",
+  xs: "h-5 px-1 [&:not(.button--link)]:text-md",
+  sm: "h-7 px-1 [&:not(.button--link)]:text-md",
+  md: "h-9 px-2 [&:not(.button--link)]:text-md",
+  lg: "h-14 px-2 [&:not(.button--link)]:text-md",
+  xl: "h-16 px-6 [&:not(.button--link)]:text-md",
+};
+
+const buttonVariants = cva(`${DEFAULT_STATE} ${DISABLED_STATE}`, {
   variants: {
-    variant: {
-      primary:
-        "text-white bg-primary-500 [&:is(:hover,:focus):not(:disabled)]:bg-primary-700",
-      outline:
-        "text-primary-600 dark:text-primary-300 bg-transparent border border-primary-600 dark:border-primary-300 [&:is(:hover,:focus):not(:disabled)]:border-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:border-primary-100 [&:is(:hover,:focus):not(:disabled)]:text-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:text-primary-100",
-      ghost:
-        "text-primary-600 dark:text-primary-300 bg-transparent [&:is(:hover,:focus):not(:disabled)]:text-primary-900 [&:is(:hover,:focus):not(:disabled)]:dark:text-primary-100 [&:is(:hover,:focus):not(:disabled)]:bg-primary-300 [&:is(:hover,:focus):not(:disabled)]:dark:bg-primary-700",
-    },
-    size: {
-      default: "h-12 px-4 [&:not(.button--link)]:text-md",
-      xs: "h-5 px-1 [&:not(.button--link)]:text-md",
-      sm: "h-7 px-1 [&:not(.button--link)]:text-md",
-      md: "h-9 px-2 [&:not(.button--link)]:text-md",
-      lg: "h-14 px-2 [&:not(.button--link)]:text-md",
-      xl: "h-16 px-6 [&:not(.button--link)]:text-md",
-    },
+    variant: VARIANTS,
+    size: SIZES,
     isFullWidth: {
       true: "w-full",
     },
@@ -38,13 +46,18 @@ const buttonVariants = cva(`${defaultState} ${disabledState}`, {
 });
 
 namespace Button {
-  export type Props = ButtonHTMLAttributes<
-    HTMLButtonElement | HTMLAnchorElement | typeof NextLink
-  > & {
+  export interface Props
+    extends Omit<
+        ButtonHTMLAttributes<
+          HTMLAnchorElement | HTMLButtonElement | typeof NextLink
+        >,
+        "is"
+      >,
+      VariantProps<typeof buttonVariants> {
     ref?: Ref<HTMLButtonElement | HTMLAnchorElement>;
     is?: "button" | "a" | typeof NextLink;
     className?: string;
-  } & VariantProps<typeof buttonVariants>;
+  }
 }
 
 export function Button({
@@ -57,7 +70,7 @@ export function Button({
   isFullWidth,
   className,
   ...props
-}: Button.Props) {
+}: Button.Props): ReactElement {
   let Element: ElementType = is;
 
   // if it's a link and disabled, render a span instead of an anchor element
@@ -77,7 +90,10 @@ export function Button({
       {...forwardedProps}
       type={type}
       ref={ref}
-      className={cn(buttonVariants({ variant, size, isFullWidth }), className)}
+      className={cn(
+        // buttonVariants({ variant, size, isFullWidth }),
+        className,
+      )}
     />
   );
 }

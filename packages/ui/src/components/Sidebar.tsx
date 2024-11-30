@@ -2,10 +2,11 @@
 import cx from "clsx";
 import {
   type CSSProperties,
+  type ReactElement,
   type ReactNode,
   createContext,
   useContext,
-  useMemo,
+  // useMemo,
 } from "react";
 import { cn } from "../utils/cn";
 
@@ -66,7 +67,7 @@ function SidebarWrapper({
   size = "250px",
   anchor = "left",
   isAnchoredToParent = false,
-}: Sidebar.WrapperProps) {
+}: Sidebar.WrapperProps): ReactElement {
   // do we really need useMemo?
   // unlike to reanchor but all these things are possible idk yet
   //  const sharedContext = useMemo(
@@ -102,7 +103,7 @@ function SidebarWrapper({
   );
 }
 
-function SidebarPage({ children }: Sidebar.PageProps) {
+function SidebarPage({ children }: Sidebar.PageProps): ReactElement {
   const { anchor } = useContext(SidebarContext);
 
   return (
@@ -128,7 +129,7 @@ function Sidebar({
   bottom = "0",
   className,
   ...props
-}: Sidebar.AccessibleProps) {
+}: Sidebar.AccessibleProps): ReactElement {
   const { isAnchoredToParent } = useContext(SidebarContext);
 
   return (
@@ -150,4 +151,4 @@ function Sidebar({
   );
 }
 
-export { Sidebar, SidebarWrapper, SidebarPage };
+export { SidebarWrapper, SidebarPage, Sidebar };

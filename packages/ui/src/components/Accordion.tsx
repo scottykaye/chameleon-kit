@@ -4,6 +4,7 @@ import { KeyboardNav, createKeyboardNavHook } from "accessible-navigation";
 import { ChevronDown } from "lucide-react";
 import {
   type KeyboardEvent,
+  type ReactElement,
   type ReactNode,
   createContext,
   useContext,
@@ -32,7 +33,10 @@ namespace Accordion {
 
 const AccordionContext = createContext<Accordion.Context>({});
 
-export function Accordion({ children, className }: Accordion.Props) {
+export function Accordion({
+  children,
+  className,
+}: Accordion.Props): ReactElement {
   const [keyboardControls] = useState(() => new KeyboardNav("vertical"));
 
   const [useKeyboardNav] = useState(() =>
@@ -59,7 +63,7 @@ export function Panel({
   label,
   controlledElement,
   defaultIsOpen = false,
-}: Accordion.PanelProps) {
+}: Accordion.PanelProps): ReactElement {
   const [isOpen, setIsOpen] = useState(defaultIsOpen);
   const { keyboardControls, useKeyboardNav } = useContext(AccordionContext);
 
