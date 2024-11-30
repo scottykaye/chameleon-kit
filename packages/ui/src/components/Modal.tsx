@@ -105,6 +105,7 @@ export function Modal({
           "w-full h-full": fullscreen,
           "bg-surface-100": !unstyled,
         },
+        isOpen ? "animate-slide-in" : "animate-slide-out",
         className,
       )}
       aria-labelledby={label}
