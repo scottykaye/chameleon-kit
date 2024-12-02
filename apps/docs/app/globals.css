@@ -76,7 +76,11 @@
 */
 
 html:has(dialog[open]) {
-  overflow: hidden;
+  touch-action: none;
+  -webkit-overflow-scrolling: none;
+  overscroll-behavior: none;
+  position: fixed;
+  overflow-y: scroll;
 }
 
 body {
