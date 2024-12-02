@@ -67,12 +67,13 @@
     transform: translateY(5%);
   }
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  dialog[open] {
-    animation: var(--animation-slide-in-up) forwards;
-  }
-}
+/*
+ @media (prefers-reduced-motion: no-preference) {
+   dialog[open] {
+     animation: var(--animation-slide-in-up) forwards;
+   }
+ }
+*/
 
 html:has(dialog[open]) {
   overflow: hidden;

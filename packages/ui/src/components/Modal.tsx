@@ -8,6 +8,7 @@ import {
   useCallback,
   useEffect,
   useRef,
+  useState,
 } from "react";
 import { cn } from "../utils/cn";
 
@@ -38,7 +39,7 @@ namespace Modal {
 
 export function Modal({
   children,
-  isOpen,
+  isOpen = false,
   onClose,
   footer,
   header,
@@ -48,7 +49,9 @@ export function Modal({
   fullscreen = false,
   size = "md",
   className,
-}: Modal.Props): ReactElement {
+}: Modal.Props): ReactElement | null {
+  const [isExiting, setIsExiting] = useState<boolean | undefined>(undefined); // Tracks if modal is exiting
+
   const ref = useRef<null | HTMLDialogElement>(null);
 
   const handleCloseModal = useCallback(() => {
@@ -88,11 +91,20 @@ export function Modal({
     if (ref.current) {
       if (isOpen) {
         ref.current.showModal();
+        setIsExiting(true);
       } else {
         ref.current.close();
+        setIsExiting(false);
       }
     }
   }, [isOpen]);
+
+  // So we don't show an initial animation
+  // We will set onMount initially isExited to undefined
+  // Once we fire isOpen, we can fall through to the modal
+  if (!isOpen && typeof isExiting === "undefined") {
+    return null;
+  }
 
   return (
     <dialog
@@ -104,6 +116,8 @@ export function Modal({
         {
           "w-full h-full": fullscreen,
           "bg-surface-100": !unstyled,
+          "animate-slide-in": isExiting === true,
+          "animate-slide-out": isExiting === false,
         },
         className,
       )}
