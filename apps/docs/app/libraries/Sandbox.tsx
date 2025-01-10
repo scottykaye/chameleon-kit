@@ -9,6 +9,7 @@ import { Input } from "@chameleon-kit/ui/Input";
 import { Modal } from "@chameleon-kit/ui/Modal";
 import { Text } from "@chameleon-kit/ui/Text";
 import { useState } from "react";
+import { cn } from "~/utils/cn";
 
 const alertVariants = [
   "default",
@@ -20,10 +21,29 @@ const alertVariants = [
 
 export function Sandbox() {
   const [isModalOpen, setModalOpen] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  function handleAnimationEnd() {
+    requestAnimationFrame(() => {
+      setIsAnimating(false);
+    });
+  }
 
   return (
     <ul className="grow grid grid-cols-1  place-content-center max-w-3xl mx-auto gap-10 p-4 min-h-full">
-      <Card is="li" className="flex flex-col gap-2">
+      <Card
+        is="li"
+        className={cn(
+          "flex flex-col gap-2",
+
+          {
+            "animate-slide-in fill-mode-forwards": isAnimating === false,
+            "animate-slide-out fill-mode-forwards": isAnimating === true,
+          },
+        )}
+        //@ts-ignore we'll figure out rest props later
+        onAnimationEnd={handleAnimationEnd}
+      >
         <Button>Button!</Button>
         <Button disabled>Button!</Button>
         <Button variant="outline">Button!</Button>

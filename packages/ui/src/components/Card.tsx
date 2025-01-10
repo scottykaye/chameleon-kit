@@ -1,5 +1,10 @@
 import { cva } from "class-variance-authority";
-import type { ElementType, ReactElement, ReactNode } from "react";
+import type {
+  ElementType,
+  HTMLAttributes,
+  ReactElement,
+  ReactNode,
+} from "react";
 import { cn } from "../utils/cn";
 
 namespace Card {
@@ -9,7 +14,7 @@ namespace Card {
     variant?: "default";
     className?: string;
     children: ReactNode;
-  };
+  } & HTMLAttributes<HTMLElement>;
 }
 
 const cardVariants = cva("p-4", {
